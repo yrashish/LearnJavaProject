@@ -27,7 +27,6 @@ public class ExampleCompletableAll {
 
         CompletableFuture completableFuture1 = CompletableFuture.supplyAsync(()->httpResponse1.body());
         CompletableFuture completableFuture2 = CompletableFuture.supplyAsync(()->httpResponse2.body());
-        CompletableFuture<Void> voidCompletableFuture = CompletableFuture.allOf(completableFuture1, completableFuture2);
         Stream.of(completableFuture1, completableFuture2)
                 .map(CompletableFuture::join)
                 .forEach(s-> System.out.println(s));
